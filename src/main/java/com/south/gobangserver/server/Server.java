@@ -25,7 +25,7 @@ public class Server {
     private ServerBootstrap bootstrap;
 
     public Server() {
-        //log.info("实例化server对象，【参数】[port=" + port + " , bossLen=" + bossLen + " , workLen=" + workLen + "]");
+        log.info("实例化server对象，【参数】[port=" + port + " , bossLen=" + bossLen + " , workLen=" + workLen + "]");
         init();
     }
 
@@ -33,7 +33,7 @@ public class Server {
         this.port = port;
         this.bossLen = bossLen;
         this.workLen = workLen;
-        //log.info("实例化server对象，【参数】[port=" + port + " , bossLen=" + bossLen + " , workLen=" + workLen + "]");
+        log.info("实例化server对象，【参数】[port=" + port + " , bossLen=" + bossLen + " , workLen=" + workLen + "]");
         init();
     }
 
@@ -47,7 +47,7 @@ public class Server {
                 .childHandler(new ChannelInitializer<NioSocketChannel>() {
                     @Override
                     protected void initChannel(NioSocketChannel ch) throws Exception {
-                        //log.info("正在给连接对象添加处理器");
+                        log.info("正在给连接对象添加处理器");
                         ch.pipeline().addLast(new HttpServerCodec());
                         ch.pipeline().addLast(new ChunkedWriteHandler());
                         ch.pipeline().addLast(new HttpObjectAggregator(1024 * 64));
@@ -62,7 +62,7 @@ public class Server {
         try {
             channelFuture = bootstrap.bind(port).sync();
             channelFuture.channel().closeFuture().sync();
-            //log.info("启动成功");
+            log.info("启动成功");
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
