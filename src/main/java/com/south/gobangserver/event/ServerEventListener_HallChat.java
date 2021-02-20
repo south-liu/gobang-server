@@ -17,7 +17,7 @@ public class ServerEventListener_HallChat implements ServerEventListener {
         for (Map.Entry<Integer, ClientSide> entry : clientSideMap.entrySet()) {
             ChannelUtils.pushToClient(entry.getValue().getChannel(), EventCode.HallChat, MapHelper.newInstance()
                     .put("time", DateUtils.format(new Date(), DateUtils.DATE_TIME_PATTERN))
-                    .put("from", client.getNickname())
+                    .put("from", client.getName())
                     .put("content", data)
                     .json());
         }

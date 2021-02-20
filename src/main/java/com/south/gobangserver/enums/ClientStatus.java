@@ -6,23 +6,10 @@ package com.south.gobangserver.enums;
 
 public enum ClientStatus {
 
-    TO_CHOOSE(-1),
+    leisure, //空闲
 
-    NO_READY(0),
+    chessing, //下棋
 
-    READY(1),
+    spectating; //旁观
 
-    WAIT(2),
-
-    PLAYING(3);
-
-    private int i;
-
-    ClientStatus(int i) {
-        this.i = i;
-    }
-
-    public int getI() {
-        return i;
-    }
 }

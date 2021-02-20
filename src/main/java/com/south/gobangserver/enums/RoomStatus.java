@@ -6,8 +6,6 @@ package com.south.gobangserver.enums;
 
 public enum RoomStatus {
 
-    BLANK("空闲"),
-
     WAIT("等待"),
 
     STARTING("开始");

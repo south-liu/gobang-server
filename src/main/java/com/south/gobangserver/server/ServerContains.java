@@ -48,7 +48,7 @@ public class ServerContains {
 	public static Room getRoom(int id) {
 		Room room = ROOM_MAP.get(id);
 		if (room != null) {
-			room.setLastFlushTime(System.currentTimeMillis());
+			//room.setLastFlushTime(System.currentTimeMillis());
 		}
 		return room;
 	}

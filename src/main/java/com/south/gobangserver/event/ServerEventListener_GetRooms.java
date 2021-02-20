@@ -21,7 +21,6 @@ public class ServerEventListener_GetRooms implements ServerEventListener {
             Room room = entry.getValue();
             list.add(MapHelper.newInstance()
                     .put("id", room.getId())
-                    .put("roomOwner", room.getRoomOwner())
                     .put("status", room.getStatus().getMsg())
                     .json());
         }

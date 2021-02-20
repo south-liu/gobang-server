@@ -6,7 +6,6 @@ import com.south.gobangserver.entity.Request;
 import com.south.gobangserver.enums.ClientStatus;
 import com.south.gobangserver.enums.EventCode;
 import com.south.gobangserver.event.ServerEventListener;
-import com.south.gobangserver.util.ChannelUtils;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
@@ -28,11 +27,17 @@ public class GobangHandle extends SimpleChannelInboundHandler<TextWebSocketFrame
     @Override
     public void channelRegistered(ChannelHandlerContext ctx) throws Exception {
         Channel channel = ctx.channel();
-        ClientSide side = new ClientSide(getId(channel), ClientStatus.TO_CHOOSE, channel);
-        side.setNickname(String.valueOf(side.getId()));
+        ClientSide side = new ClientSide(getId(channel), ClientStatus.leisure, channel);
+        side.setName("gobang-" + side.getId());
         log.info("{} 连接成功", side.getId());
         ServerContains.CLIENT_SIDE_MAP.put(side.getId(), side);
-        ChannelUtils.pushToClient(channel, EventCode.Success, "连接服务器成功");
+    }
+
+    @Override
+    public void channelUnregistered(ChannelHandlerContext ctx) throws Exception {
+        Channel channel = ctx.channel();
+        int id = getId(channel);
+        ServerContains.CLIENT_SIDE_MAP.remove(id);
     }
 
     private int getId(Channel channel) {

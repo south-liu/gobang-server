@@ -12,9 +12,10 @@ public class ClientSide {
 
 	private int roomId;
 
-	private String nickname;
+	private String name;
 
 	private ClientStatus status;
+
 
 	private transient Channel channel;
 
@@ -25,6 +26,7 @@ public class ClientSide {
 		this.id = id;
 		this.status = status;
 		this.channel = channel;
+		this.status = ClientStatus.leisure;
 	}
 
 	public int getId() {
@@ -43,12 +45,12 @@ public class ClientSide {
 		this.roomId = roomId;
 	}
 
-	public String getNickname() {
-		return nickname;
+	public String getName() {
+		return name;
 	}
 
-	public void setNickname(String nickname) {
-		this.nickname = nickname;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public ClientStatus getStatus() {
